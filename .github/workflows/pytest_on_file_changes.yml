@@ -1,0 +1,19 @@
+name: Pytest executed based on file changes
+
+on: # Defines events that should trigger the workflow
+  push:
+    branches-ignore:
+      - main
+  pull_request:
+    branches: [ "main" ]
+
+jobs: # Executed when the events are triggered
+  path_changes:
+    name: Paths Changes Filter
+    steps:
+      - uses: dorny/paths-filter@v3.0.2
+         id: filter
+          with:
+            filters: |
+            calculator: apps/calculator
+            circle: apps/geometry
