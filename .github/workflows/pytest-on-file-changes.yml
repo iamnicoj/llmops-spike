@@ -17,6 +17,7 @@ jobs: # Executed when the events are triggered
       - uses: dorny/paths-filter@v3
         id: filter
         with:
+          base: 'github-actions'
           filters: |
             calculator:
               - 'apps/calculator/**'
@@ -26,25 +27,17 @@ jobs: # Executed when the events are triggered
       - name: Install Pytest
         run: pip install pytest
 
-      # # run only if 'calculator' files were changed
-      # - name: Calculator Tests
-      #   if: steps.filter.outputs.calculator == 'true'
-      #   # if: steps.filter.outputs.changes.calculator == 'true'
-      #   run:
-      #     pytest tests/calculator_test.py
-
-      # # run only if 'geometry' files were changed
-      # - name: Circle Tests
-      #   if: steps.filter.outputs.circle == 'true'
-      #   # if: steps.filter.outputs.changes.circle == 'true'
-      #   run:
-      #     pytest tests/geometry_test.py
-
-      - name: Check Calculator Changes
-        run: |
-          if git diff --name-only ${{ github.base_ref }}...${{ github.head_ref }} | grep -q '^apps/calculator/'; then
-          echo "Calculator files have been changed"
+      # run only if 'calculator' files were changed
+      - name: Calculator Tests
+        if: steps.filter.outputs.calculator == 'true'
+        # if: steps.filter.outputs.changes.calculator == 'true'
+        run:
           pytest tests/calculator_test.py
-            else
-          echo "No changes in Calculator files"
-          fi
+
+      # run only if 'geometry' files were changed
+      - name: Circle Tests
+        if: steps.filter.outputs.circle == 'true'
+        # if: steps.filter.outputs.changes.circle == 'true'
+        run:
+          pytest tests/geometry_test.py
+
