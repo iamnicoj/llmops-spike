@@ -10,3 +10,6 @@ class CircleGeometry:
 
     def get_circumference(self):
         return 2 * math.pi * self.radius
+
+
+print("Testing if file is detected as changed!")
