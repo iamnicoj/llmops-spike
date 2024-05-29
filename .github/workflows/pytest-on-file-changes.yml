@@ -6,6 +6,7 @@ on: # Defines events that should trigger the workflow
       - main
   pull_request:
     # branches: [ "main" ]
+    # TODO: change back to main when merging
     branches: [ "github-actions" ]
 
 jobs: # Executed when the events are triggered
@@ -17,7 +18,7 @@ jobs: # Executed when the events are triggered
       - uses: dorny/paths-filter@v3
         id: filter
         with:
-          base: 'github-actions'
+          base: 'github-actions' # Default is set to main
           filters: |
             calculator:
               - 'apps/calculator/**'
@@ -30,14 +31,12 @@ jobs: # Executed when the events are triggered
       # run only if 'calculator' files were changed
       - name: Calculator Tests
         if: steps.filter.outputs.calculator == 'true'
-        # if: steps.filter.outputs.changes.calculator == 'true'
         run:
           pytest tests/calculator_test.py
 
       # run only if 'geometry' files were changed
       - name: Circle Tests
         if: steps.filter.outputs.circle == 'true'
-        # if: steps.filter.outputs.changes.circle == 'true'
         run:
           pytest tests/geometry_test.py
 

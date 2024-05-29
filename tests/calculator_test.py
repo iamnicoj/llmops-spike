@@ -28,7 +28,7 @@ def test_division():
 # Test case for division by zero: expected to fail
 
 
-# def test_division_by_zero():
-#     calc = Calculator()
-#     with pytest.raises(ZeroDivisionError):
-#         calc.divide(10, 0)
+def test_division_by_zero():
+    calc = Calculator()
+    with pytest.raises(ZeroDivisionError):
+        calc.divide(10, 0)
