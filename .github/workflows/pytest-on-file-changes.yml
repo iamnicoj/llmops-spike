@@ -17,7 +17,7 @@ jobs: # Executed when the events are triggered
         id: filter
         with:
           filters: |
-            calculator:'apps/calculator.py'
+            calculator: 'apps/calculator.py'
             circle: 'apps/geometry.py'
 
       - name: Calculator Tests
