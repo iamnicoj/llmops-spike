@@ -18,9 +18,9 @@ jobs: # Executed when the events are triggered
         with:
           filters: |
             calculator:
-              - 'apps/calculator/**'
+              - 'apps/calculator/calculator.py'
             circle:
-              - 'apps/geometry/**'
+              - 'apps/geometry/circle_geometry.py'
 
       - name: Install Pytest
         run: pip install pytest
