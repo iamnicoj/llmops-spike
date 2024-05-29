@@ -17,10 +17,13 @@ jobs: # Executed when the events are triggered
         id: filter
         with:
           filters: |
-            calculator:'apps/calculator.py'
-            circle: 'apps/geometry.py'
+            calculator:
+              - 'apps/calculator/**'
+            circle:
+              - 'apps/geometry/**'
 
+      # run only if 'calculator' files were changed
       - name: Calculator Tests
         if: steps.filter.outputs.calculator == 'true'
-        run: |
+        run:
           pytest tests/calculator_test.py
