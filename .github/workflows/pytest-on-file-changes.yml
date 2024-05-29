@@ -30,3 +30,9 @@ jobs: # Executed when the events are triggered
         if: steps.filter.outputs.calculator == 'true'
         run:
           pytest tests/calculator_test.py
+
+      # run only if 'geometry' files were changed
+      - name: Circle Tests
+        if: steps.filter.outputs.circle == 'true'
+        run:
+          pytest tests/geometry_test.py
