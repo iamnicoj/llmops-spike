@@ -19,3 +19,8 @@ jobs: # Executed when the events are triggered
           filters: |
             calculator: apps/calculator
             circle: apps/geometry
+
+      - name: Calculator Tests
+        if: steps.filter.outputs.calculator == 'true'
+        run: |
+          pytest tests/calculator_test.py
