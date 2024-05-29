@@ -17,10 +17,10 @@ jobs: # Executed when the events are triggered
         id: filter
         with:
           filters: |
-            calculator: apps/calculator
-            circle: apps/geometry
+            calculator:apps/calculator.py
+            circle: apps/geometry.py
 
       - name: Calculator Tests
-        if: steps.filter.outputs.calculator == 'true'
+        if: steps.filter.outputs
         run: |
           pytest tests/calculator_test.py
