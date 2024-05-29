@@ -22,9 +22,11 @@ jobs: # Executed when the events are triggered
             circle:
               - 'apps/geometry/**'
 
+      - name: Install Pytest
+        run: pip install pytest
+
       # run only if 'calculator' files were changed
       - name: Calculator Tests
         if: steps.filter.outputs.calculator == 'true'
         run:
-          pip install pytest
           pytest tests/calculator_test.py
