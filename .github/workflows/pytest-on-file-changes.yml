@@ -5,7 +5,8 @@ on: # Defines events that should trigger the workflow
     branches-ignore:
       - main
   pull_request:
-    branches: [ "main" ]
+    # branches: [ "main" ]
+    branches: [ "github-actions" ]
 
 jobs: # Executed when the events are triggered
   path_changes: # https://github.com/marketplace/actions/paths-changes-filter
@@ -27,14 +28,14 @@ jobs: # Executed when the events are triggered
 
       # run only if 'calculator' files were changed
       - name: Calculator Tests
-        # if: steps.filter.outputs.calculator == 'true'
-        if: steps.filter.outputs.changes.calculator == 'true'
+        if: steps.filter.outputs.calculator == 'true'
+        # if: steps.filter.outputs.changes.calculator == 'true'
         run:
           pytest tests/calculator_test.py
 
       # run only if 'geometry' files were changed
       - name: Circle Tests
-        # if: steps.filter.outputs.circle == 'true'
-        if: steps.filter.outputs.changes.circle == 'true'
+        if: steps.filter.outputs.circle == 'true'
+        # if: steps.filter.outputs.changes.circle == 'true'
         run:
           pytest tests/geometry_test.py
