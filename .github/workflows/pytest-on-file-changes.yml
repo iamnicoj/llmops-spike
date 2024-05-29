@@ -34,6 +34,7 @@ jobs: # Executed when the events are triggered
 
       # run only if 'geometry' files were changed
       - name: Circle Tests
-        if: steps.filter.outputs.circle == 'true'
+        # if: steps.filter.outputs.circle == 'true'
+        if: steps.filter.outputs.changes.circle == 'true'
         run:
           pytest tests/geometry_test.py
