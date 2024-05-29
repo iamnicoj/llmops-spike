@@ -2,8 +2,6 @@ name: Pytest executed based on file changes
 
 on: # Defines events that should trigger the workflow
   push:
-    branches:
-      - github-actions
     branches-ignore:
       - main
   pull_request:
