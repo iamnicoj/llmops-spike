@@ -25,5 +25,6 @@ jobs: # Executed when the events are triggered
       # run only if 'calculator' files were changed
       - name: Calculator Tests
         if: steps.filter.outputs.calculator == 'true'
-        run:
+        run: |
+          echo "Running calculator tests"
           pytest tests/calculator_test.py
