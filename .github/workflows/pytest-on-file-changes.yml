@@ -9,7 +9,7 @@ on: # Defines events that should trigger the workflow
 
 jobs: # Executed when the events are triggered
   path_changes: # https://github.com/marketplace/actions/paths-changes-filter
-    name: Paths Changes Filter
+    name: Exectue Tests Based on Changed Files
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -25,11 +25,12 @@ jobs: # Executed when the events are triggered
       - name: Install Pytest
         run: pip install pytest
 
-      # # run only if 'calculator' files were changed
-      # - name: Calculator Tests
-      #   if: steps.filter.outputs.calculator == 'true'
-      #   run:
-      #     pytest tests/calculator_test.py
+      # run only if 'calculator' files were changed
+      - name: Calculator Tests
+        if: steps.filter.outputs.calculator == 'true'
+        run:
+          pytest tests/calculator_test.py
+
 
       # run only if 'geometry' files were changed
       - name: Circle Tests
