@@ -26,8 +26,4 @@ jobs: # Executed when the events are triggered
       - name: Calculator Tests
         if: steps.filter.outputs.calculator == 'true'
         run: |
-          echo "Running calculator tests"
-          - name: Calculator Tests
-            if: steps.filter.outputs.calculator == 'true'
-            run: |
-              pytest tests/calculator_test.py
+          pytest
