@@ -2,7 +2,7 @@ class Triangle:
 
     def __init__(self, base, height, length):
         if length >= base + height or base >= length + height or height >= base + length:
-            raise ValueError("Invalid side lengths.")
+            raise ValueError("Invalid side lengths")
         self.base = base
         self.height = height
         self.length = length
