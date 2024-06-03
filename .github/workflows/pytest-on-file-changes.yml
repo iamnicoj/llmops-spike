@@ -23,7 +23,11 @@ jobs: # Executed when the events are triggered
             calculator:
               - 'apps/calculator/**'
             circle:
-              - 'apps/geometry/**'
+              - 'apps/geometry/circle.py'
+            rectangle:
+              - 'apps/geometry/rectangle.py'
+            triangle:
+              - 'apps/geometry/triangle.py'
 
       - name: Install Pytest
         run: pip install pytest
@@ -34,9 +38,21 @@ jobs: # Executed when the events are triggered
         run:
           pytest tests/calculator_test.py
 
-      # run only if 'geometry' files were changed
+      # run only if 'circle' files were changed
       - name: Circle Tests
         if: steps.filter.outputs.circle == 'true'
         run:
-          pytest tests/geometry_test.py
+          pytest tests/circle_test.py
+
+      # run only if 'rectangle' files were changed
+      - name: Rectangle Tests
+        if: steps.filter.outputs.rectangle == 'true'
+        run:
+          pytest tests/rectangle_test.py
+
+      # run only if 'triangle' files were changed
+      - name: Triangle Tests
+        if: steps.filter.outputs.triangle == 'true'
+        run:
+          pytest tests/triangle_test.py
 

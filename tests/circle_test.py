@@ -1,5 +1,5 @@
 import pytest
-from apps.geometry.circle_geometry import CircleGeometry
+from apps.geometry.circle import CircleGeometry
 
 
 def test_area():
