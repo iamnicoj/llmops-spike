@@ -19,15 +19,15 @@ The purpose of this spike is to simulate how a workflow gets triggered based on 
 
 ### Picomatch
 
-  - Picomatch is a versatile library for evaluating path expressions, it's useful in scenarios involving file matching and filtering.
+Picomatch is a versatile library for evaluating path expressions, it's useful in scenarios involving file matching and filtering.
 
-      > Note: It doesn't directly handle the contents in the files. For example: if you're looking to ignore whitespace changes within the content of files, you would need to use a different tool or library tailored for that purpose.
+  > Note: It doesn't directly handle the contents in the files. For example: if you're looking to ignore whitespace changes within the content of files, you would need to use a different tool or library tailored for that purpose.
 
-    - Picomatch doesn't perform diff checks directly; instead, it focuses on matching file paths against glob patterns or specific file paths.
+- Picomatch doesn't perform diff checks directly; instead, it focuses on matching file paths against glob patterns or specific file paths.
 
-      - Glob Pattern: When you provide a glob pattern to Picomatch, it converts this pattern into a regular expression (regex). This conversion allows the library to match paths against the pattern efficiently.
+  - Glob Pattern: When you provide a glob pattern to Picomatch, it converts this pattern into a regular expression (regex). This conversion allows the library to match paths against the pattern efficiently.
 
-        - Once the pattern is compiled, you can use the generated matcher function to test if a given path matches the pattern.
+    - Once the pattern is compiled, you can use the generated matcher function to test if a given path matches the pattern.
 
-      - Specific File Path: When you provide a specific file path to Picomatch without any wildcards or glob pattern syntax, it will only match if the pattern you specify exactly matches the provided file path.
+  - Specific File Path: When you provide a specific file path to Picomatch without any wildcards or glob pattern syntax, it will only match if the pattern you specify exactly matches the provided file path.
       
